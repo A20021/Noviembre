@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="Entidades\Cita.cs" />
     <Compile Include="Entidades\Ciudadano.cs" />
+    <Compile Include="Entidades\ComprobanteDomicilio.cs" />
+    <Compile Include="Entidades\DocumentoNacionalidad.cs" />
     <Compile Include="Entidades\Estado.cs" />
     <Compile Include="Entidades\Modulo.cs" />
     <Compile Include="Entidades\Municipio.cs" />
