@@ -1,11 +1,11 @@
 ﻿@using Noviembre.Core.Entidades
-@model List<Usuario>
+@model List<Tramite>
 
 <div id="page-wrapper">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Usuarios</h1>
+                <h1 class="page-header">Tramites</h1>
             </div>
         </div>
 
@@ -17,28 +17,20 @@
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Id</th>
                                         <th>Nombre</th>
-                                        <th>Email</th>
-                                        <th>Password</th>
+                                        <th>Id</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
-                                    @foreach (Usuario u in Model)
+                                    @foreach (Tramite t in Model)
                                     {
                                         <tr>
                                             <td>
-                                                @u.Id
+                                                @t.Nombre
                                             </td>
                                             <td>
-                                                @u.Nombre
-                                            </td>
-                                            <td>
-                                                @u.Email
-                                            </td>
-                                            <td>
-                                                @u.Password
+                                                @t.Id
                                             </td>
                                         </tr>
                                     }

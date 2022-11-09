@@ -7,12 +7,12 @@ using System.Web.Mvc;
 
 namespace Noviembre.web.Controllers
 {
-    public class EstadoController : Controller
+    public class TramiteController : Controller
     {
-        // GET: Estado
+        // GET: Tramite
         public ActionResult Index(){
-            List<Estado> estados = Estado.GetAll();
-            return View(estados);
+            List<Tramite> tramites = Tramite.GetAllTramites();
+            return View(tramites);
         }
     }
 }

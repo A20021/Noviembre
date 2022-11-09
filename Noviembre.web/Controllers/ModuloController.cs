@@ -7,13 +7,13 @@ using System.Web.Mvc;
 
 namespace Noviembre.web.Controllers
 {
-    public class UsuarioController : Controller
+    public class ModuloController : Controller
     {
-        // GET: Usuario
+        // GET: Modulo
         public ActionResult Index()
         {
-            List<Usuario> usuarios = Usuario.GetAllUsuarios();
-            return View(usuarios);
+            List<Modulo> modulos = Modulo.GetAllModulos();
+            return View(modulos);
         }
     }
 }

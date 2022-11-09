@@ -1,11 +1,11 @@
 ﻿@using Noviembre.Core.Entidades
-@model List<Usuario>
+@model List<Modulo>
 
 <div id="page-wrapper">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Usuarios</h1>
+                <h1 class="page-header">Modulos</h1>
             </div>
         </div>
 
@@ -19,26 +19,30 @@
                                     <tr>
                                         <th>Id</th>
                                         <th>Nombre</th>
-                                        <th>Email</th>
-                                        <th>Password</th>
+                                        <th>Direccion</th>
+                                        <th>Horario</th>
+                                        <th>Referencias</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
-                                    @foreach (Usuario u in Model)
+                                    @foreach (Modulo m in Model)
                                     {
                                         <tr>
                                             <td>
-                                                @u.Id
+                                                @m.Id
                                             </td>
                                             <td>
-                                                @u.Nombre
+                                                @m.Nombre
                                             </td>
                                             <td>
-                                                @u.Email
+                                                @m.Direccion
                                             </td>
                                             <td>
-                                                @u.Password
+                                                @m.Horario
+                                            </td>
+                                            <td>
+                                                @m.Referencias
                                             </td>
                                         </tr>
                                     }
