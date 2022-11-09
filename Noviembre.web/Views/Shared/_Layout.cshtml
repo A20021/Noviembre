@@ -148,13 +148,27 @@
                                 <a href="@Url.Action("Index", "Tramite")"><i class="fa fa-file-text-o"></i> Tramite</a>
                             </li>
                             <li>
+                                <a href="@Url.Action("Index", "Cita")"><i class="fa  fa-files-o"></i> Cita</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-book"></i> Documentos<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="@Url.Action("Index", "DocumentoNacionalidad")"> Documentos de nacionalidad</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Index", "ComprobanteDomicilio")"> Comprobantes de domicilio</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
                                 <a href="#">
                                     <i class="fa fa-map-o"></i> Entidad
                                     <span class="fa arrow"></span>
                                 </a>
                                 <ul class="nav nav-second-level collapse in" aria-expanded="false" style="height: 0px;">
                                     <li>
-                                        <a href="@Url.Action("Index", "Estado")"><i></i> Estado</a>
+                                        <a href="@Url.Action("Index", "Estado")"> Estado</a>
                                     </li>
                                     <li>
                                         <a href="@Url.Action("Index", "Municipio")"> Municipio</a>

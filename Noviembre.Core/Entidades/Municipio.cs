@@ -22,7 +22,7 @@ namespace Noviembre.Core.Entidades
                 Conexion conexion = new Conexion();
                 if (conexion.OpenConnection())
                 {
-                    string query = "SELECT id,nombre FROM municipio;";
+                    string query = "SELECT * FROM municipio;";
                     MySqlCommand commnd = new MySqlCommand(query, conexion.Connection);
                     MySqlDataReader dataReader = commnd.ExecuteReader();
                     while (dataReader.Read())
@@ -30,6 +30,10 @@ namespace Noviembre.Core.Entidades
                         Municipio municipio = new Municipio();
                         municipio.Id = int.Parse(dataReader["id"].ToString());
                         municipio.Nombre = dataReader["nombre"].ToString();
+
+                        Estado estado = new Estado();
+                        estado.Id = int.Parse(dataReader["idEstado"].ToString());
+                        municipio.Estado = estado;
                         municipios.Add(municipio);
                     }
                     dataReader.Close();

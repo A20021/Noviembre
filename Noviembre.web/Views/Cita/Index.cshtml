@@ -1,0 +1,67 @@
+﻿@using Noviembre.Core.Entidades
+@model List<Cita>
+
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Citas</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Fecha</th>
+                                        <th>Id del Modulo</th>
+                                        <th>Id del Ciudadano</th>
+                                        <th>Id del Tramite</th>
+                                        <th>Id del Documento de nacionalidad</th>
+                                        <th>Id del Comprobante de domicilio</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @foreach (Cita ci in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @ci.Id
+                                            </td>
+                                            <td>
+                                                @ci.Fecha
+                                            </td>
+                                            <td>
+                                                @ci.Modulo.Id
+                                            </td>
+                                            <td>
+                                                @ci.Ciudadano.Id
+                                            </td>
+                                            <td>
+                                                @ci.Tramite.Id
+                                            </td>
+                                            <td>
+                                                @ci.DocumentoNacionalidad.Id
+                                            </td>
+                                            <td>
+                                                @ci.ComprobanteDomicilio.Id
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

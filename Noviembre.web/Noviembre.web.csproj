@@ -120,7 +120,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CitaController.cs" />
     <Compile Include="Controllers\CiudadanoController.cs" />
+    <Compile Include="Controllers\ComprobanteDomicilioController.cs" />
+    <Compile Include="Controllers\DocumentoNacionalidadController.cs" />
     <Compile Include="Controllers\EstadoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ModuloController.cs" />
@@ -217,6 +220,9 @@
     <Content Include="Views\Tramite\Index.cshtml" />
     <Content Include="Views\Modulo\Index.cshtml" />
     <Content Include="Views\Ciudadano\Index.cshtml" />
+    <Content Include="Views\DocumentoNacionalidad\Index.cshtml" />
+    <Content Include="Views\ComprobanteDomicilio\Index.cshtml" />
+    <Content Include="Views\Cita\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
