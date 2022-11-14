@@ -18,7 +18,7 @@ namespace Noviembre.Core.Entidades
             {
                 Conexion conexion = new Conexion();
                 if (conexion.OpenConnection()){
-                    string query = "SELECT * FROM estado;";
+                    string query = "SELECT * FROM estado ORDER BY nombre;";
                     MySqlCommand commnd = new MySqlCommand(query, conexion.Connection);
                     MySqlDataReader dataReader = commnd.ExecuteReader();
                     while (dataReader.Read()){
@@ -36,7 +36,7 @@ namespace Noviembre.Core.Entidades
             return estados;
         }
 
-        public bool Guardar(String nombre){
+        public static bool Guardar(String nombre){
             bool result = false;
             try{
                 Conexion conexion = new Conexion();

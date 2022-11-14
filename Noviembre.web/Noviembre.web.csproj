@@ -223,6 +223,7 @@
     <Content Include="Views\DocumentoNacionalidad\Index.cshtml" />
     <Content Include="Views\ComprobanteDomicilio\Index.cshtml" />
     <Content Include="Views\Cita\Index.cshtml" />
+    <Content Include="Views\Estado\Registro.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

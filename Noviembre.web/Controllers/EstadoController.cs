@@ -14,5 +14,14 @@ namespace Noviembre.web.Controllers
             List<Estado> estados = Estado.GetAll();
             return View(estados);
         }
+
+        public ActionResult Registro(){
+            return View();
+        }
+
+        public ActionResult Guardar(String nombre){
+            Estado.Guardar(nombre);
+            return RedirectToAction("Index");
+        }
     }
 }
