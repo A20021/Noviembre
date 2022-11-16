@@ -14,5 +14,15 @@ namespace Noviembre.web.Controllers
             List<Tramite> tramites = Tramite.GetAllTramites();
             return View(tramites);
         }
+
+        public ActionResult Registro(){
+            return View();
+        }
+
+        public ActionResult Guardar(String nombre)
+        {
+            Tramite.Guardar(nombre);
+            return RedirectToAction("Index");
+        }
     }
 }

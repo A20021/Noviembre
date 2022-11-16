@@ -35,6 +35,10 @@ namespace Noviembre.Core.Entidades
                         modulo.Direccion = dataReader["direccion"].ToString();
                         modulo.Horario = dataReader["horario"].ToString();
                         modulo.Referencias = dataReader["referencias"].ToString();
+
+                        Municipio municipio = new Municipio();
+                        municipio.Id = int.Parse(dataReader["idMunicipio"].ToString());
+                        modulo.Municipio = municipio;
                         modulos.Add(modulo);
                     }
                     dataReader.Close();
@@ -47,5 +51,63 @@ namespace Noviembre.Core.Entidades
             }
             return modulos;
         }
+
+        public static bool Guardar(String nombre, String direccion, String horario, String referencias, int idMunicipio)
+        {
+            bool result = false;
+            try
+            {
+                Conexion conexion = new Conexion();
+                if (conexion.OpenConnection())
+                {
+                    MySqlCommand cmd = conexion.Connection.CreateCommand();
+                    cmd.CommandText = "INSERT INTO modulo (nombre, direccion, horario, referencias, idMunicipio) Values (@nombre, @direccion, @horario, @referencias, @idMunicipio)";
+                    cmd.Parameters.AddWithValue("@nombre", nombre);
+                    cmd.Parameters.AddWithValue("@direccion", direccion);
+                    cmd.Parameters.AddWithValue("@horario", horario);
+                    cmd.Parameters.AddWithValue("@referencias", referencias);
+                    cmd.Parameters.AddWithValue("@idMunicipio", idMunicipio);
+
+                    result = cmd.ExecuteNonQuery() == 1;
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
+        }
+
+        public bool Editar(String nombre, int id, String direccion, String horario, String referencias, int idMunicipio)
+        {
+            bool result = false;
+            try
+            {
+                Conexion conexion = new Conexion();
+                if (conexion.OpenConnection())
+                {
+                    MySqlCommand cmd = conexion.Connection.CreateCommand();
+                    cmd.CommandText = "UPDATE estado SET nombre = @nombre, direccion = @direccion, horario = @horario, referencias = @referencias, idMunicipio = @idMunicipio WHERE id = @id;";
+                    cmd.Parameters.AddWithValue("@nombre", nombre);
+                    cmd.Parameters.AddWithValue("@direccion", direccion);
+                    cmd.Parameters.AddWithValue("@horario", horario);
+                    cmd.Parameters.AddWithValue("@referencias", referencias);
+                    cmd.Parameters.AddWithValue("@idMunicipio", idMunicipio);
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    result = cmd.ExecuteNonQuery() == 1;
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
+        }
+
     }
 }

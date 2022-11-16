@@ -15,5 +15,16 @@ namespace Noviembre.web.Controllers
             List<Modulo> modulos = Modulo.GetAllModulos();
             return View(modulos);
         }
+
+        public ActionResult Registro()
+        {
+            return View();
+        }
+
+        public ActionResult Guardar(String nombre, String direccion, String horario, String referencias, int idMunicipio)
+        {
+            Modulo.Guardar(nombre, direccion, horario, referencias, idMunicipio);
+            return RedirectToAction("Index");
+        }
     }
 }

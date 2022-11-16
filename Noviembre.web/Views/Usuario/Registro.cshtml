@@ -1,0 +1,30 @@
+﻿<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Registro del usuario</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form action="@Url.Action("Guardar", "Usuario")">
+                            <div class="form-group">
+                                <label>Nombre del Usuario:</label>
+                                <input class="form-control" name="nombre" />
+                                <label>Email del usuario:</label>
+                                <input class="form-control" name="email"/>
+                                <label>Password del usuario:</label>
+                                <input class="form-control" name="password"/>
+                            </div>
+                            <button class="btn btn-success" type="submit">Guardar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

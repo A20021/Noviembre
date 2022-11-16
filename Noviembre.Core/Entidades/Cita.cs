@@ -66,5 +66,65 @@ namespace Noviembre.Core.Entidades
             }
             return citas;
         }
+
+        public static bool Guardar(DateTime fecha, int idModulo, int idCiudadano, int idTramite, int idDocumentoNacionalidad, int idComprobanteDomicilio)
+        {
+            bool result = false;
+            try
+            {
+                Conexion conexion = new Conexion();
+                if (conexion.OpenConnection())
+                {
+                    MySqlCommand cmd = conexion.Connection.CreateCommand();
+                    cmd.CommandText = "INSERT INTO cita (fecha, idModulo, idCiudadano, idTramite, idDocumentoNacionalidad, idComprobanteDomicilio) Values (@fecha, @idModulo, @idCiudadano, @idTramite, @idDocumentoNacionalidad, @idComprobanteDomicilio)";
+                    cmd.Parameters.AddWithValue("@fecha", fecha);
+                    cmd.Parameters.AddWithValue("@idModulo", idModulo);
+                    cmd.Parameters.AddWithValue("@idCiudadano", idCiudadano);
+                    cmd.Parameters.AddWithValue("@idTramite", idTramite);
+                    cmd.Parameters.AddWithValue("@idDocumentoNacionalidad", idDocumentoNacionalidad);
+                    cmd.Parameters.AddWithValue("@idComprobanteDomicilio", idComprobanteDomicilio);
+
+                    result = cmd.ExecuteNonQuery() == 1;
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
+        }
+
+        public bool Editar(DateTime fecha, int id, int idModulo, int idCiudadano, int idTramite, int idDocumentoNacionalidad, int idComprobanteDomicilio)
+        {
+            bool result = false;
+            try
+            {
+                Conexion conexion = new Conexion();
+                if (conexion.OpenConnection())
+                {
+                    MySqlCommand cmd = conexion.Connection.CreateCommand();
+                    cmd.CommandText = "UPDATE cita SET fecha = @fecha, idModulo = @idModulo, idCiudadano = @idCiudadano, idTramite = @idTramite, idDocumentoNacionalidad = @idDocumentoNacionalidad, idComprobanteDomicilio = @idComprobanteDomicilio WHERE id = @id;";
+                    cmd.Parameters.AddWithValue("@fecha", fecha);
+                    cmd.Parameters.AddWithValue("@idModulo", idModulo);
+                    cmd.Parameters.AddWithValue("@idCiudadano", idCiudadano);
+                    cmd.Parameters.AddWithValue("@idTramite", idTramite);
+                    cmd.Parameters.AddWithValue("@idDocumentoNacionalidad", idDocumentoNacionalidad);
+                    cmd.Parameters.AddWithValue("@idComprobanteDomicilio", idComprobanteDomicilio);
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    result = cmd.ExecuteNonQuery() == 1;
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
+        }
+
     }
 }

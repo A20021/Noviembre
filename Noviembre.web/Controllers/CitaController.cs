@@ -15,5 +15,17 @@ namespace Noviembre.web.Controllers
             List<Cita> citas = Cita.GetAllCitas();
             return View(citas);
         }
+
+        public ActionResult Registro()
+        {
+            return View();
+        }
+
+        public ActionResult Guardar(DateTime fecha, int idModulo, int idCiudadano, int idTramite, int idDocumentoNacionalidad, int idComprobanteDomicilio)
+        {
+            Cita.Guardar(fecha, idModulo, idCiudadano, idTramite, idDocumentoNacionalidad, idComprobanteDomicilio);
+            return RedirectToAction("Index");
+        }
+
     }
 }

@@ -15,5 +15,16 @@ namespace Noviembre.web.Controllers
             List<Ciudadano> ciudadanos = Ciudadano.GetAllCiudadanos();
             return View(ciudadanos);
         }
+
+        public ActionResult Registro()
+        {
+            return View();
+        }
+
+        public ActionResult Guardar(String nombre, String apellidoPaterno, String apellidoMaterno, String telefono, String direccion, String email)
+        {
+            Ciudadano.Guardar(nombre, apellidoPaterno, apellidoMaterno, telefono, direccion, email);
+            return RedirectToAction("Index");
+        }
     }
 }

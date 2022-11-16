@@ -15,5 +15,16 @@ namespace Noviembre.web.Controllers
             List<Municipio> municipios = Municipio.GellAllMunicipios();
             return View(municipios);
         }
+
+        public ActionResult Registro()
+        {
+            return View();
+        }
+
+        public ActionResult Guardar(String nombre, int idEstado)
+        {
+            Municipio.Guardar(nombre, idEstado);
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -10,10 +10,19 @@ namespace Noviembre.web.Controllers
     public class ComprobanteDomicilioController : Controller
     {
         // GET: ComprobanteDomicilio
-        public ActionResult Index()
-        {
+        public ActionResult Index(){
             List<ComprobanteDomicilio> comprobantes = ComprobanteDomicilio.GetAllComprobantes();
             return View(comprobantes);
+        }
+
+        public ActionResult Registro(){
+            return View();
+        }
+
+        public ActionResult Guardar(String nombre)
+        {
+            ComprobanteDomicilio.Guardar(nombre);
+            return RedirectToAction("Index");
         }
     }
 }

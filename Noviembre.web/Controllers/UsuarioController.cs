@@ -15,5 +15,16 @@ namespace Noviembre.web.Controllers
             List<Usuario> usuarios = Usuario.GetAllUsuarios();
             return View(usuarios);
         }
+
+        public ActionResult Registro()
+        {
+            return View();
+        }
+
+        public ActionResult Guardar(String nombre, String email, String password)
+        {
+            Usuario.Guardar(nombre, email, password);
+            return RedirectToAction("Index");
+        }
     }
 }

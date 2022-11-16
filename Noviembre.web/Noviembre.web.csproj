@@ -224,6 +224,14 @@
     <Content Include="Views\ComprobanteDomicilio\Index.cshtml" />
     <Content Include="Views\Cita\Index.cshtml" />
     <Content Include="Views\Estado\Registro.cshtml" />
+    <Content Include="Views\Tramite\Registro.cshtml" />
+    <Content Include="Views\ComprobanteDomicilio\Registro.cshtml" />
+    <Content Include="Views\DocumentoNacionalidad\Registro.cshtml" />
+    <Content Include="Views\Ciudadano\Registro.cshtml" />
+    <Content Include="Views\Usuario\Registro.cshtml" />
+    <Content Include="Views\Municipio\Registro.cshtml" />
+    <Content Include="Views\Modulo\Registro.cshtml" />
+    <Content Include="Views\Cita\Registro.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

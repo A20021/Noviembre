@@ -51,5 +51,64 @@ namespace Noviembre.Core.Entidades
             return ciudadanos;
         }
 
+        public static bool Guardar(String nombre,String apellidoPaterno,String apellidoMaterno,String telefono,String direccion,String email)
+        {
+            bool result = false;
+            try
+            {
+                Conexion conexion = new Conexion();
+                if (conexion.OpenConnection())
+                {
+                    MySqlCommand cmd = conexion.Connection.CreateCommand();
+                    cmd.CommandText = "INSERT INTO ciudadano (nombre,apellidoPaterno,apellidoMaterno,telefono,direccion,email) Values (@nombre,@apellidoPaterno,@apellidoMaterno,@telefono,@direccion,@email)";
+                    cmd.Parameters.AddWithValue("@nombre", nombre);
+                    cmd.Parameters.AddWithValue("@apellidoPaterno", apellidoPaterno);
+                    cmd.Parameters.AddWithValue("@apellidoMaterno", apellidoMaterno);
+                    cmd.Parameters.AddWithValue("@telefono", telefono);
+                    cmd.Parameters.AddWithValue("@direccion", direccion);
+                    cmd.Parameters.AddWithValue("@email", email);
+
+                    result = cmd.ExecuteNonQuery() == 1;
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
+        }
+
+        public bool Editar(String nombre, int id, String apellidoPaterno, String apellidoMaterno, String telefono, String direccion, String email)
+        {
+            bool result = false;
+            try
+            {
+                Conexion conexion = new Conexion();
+                if (conexion.OpenConnection())
+                {
+                    MySqlCommand cmd = conexion.Connection.CreateCommand();
+                    cmd.CommandText = "UPDATE ciudadano SET nombre = @nombre, apellidoPaterno = @apellidoPaterno, apellidoMaterno = @apellidoMaterno, telefono = @telefono, direccion = @direccion, email = @email WHERE id = @id;";
+                    cmd.Parameters.AddWithValue("@nombre", nombre);
+                    cmd.Parameters.AddWithValue("@apellidoPaterno", apellidoPaterno);
+                    cmd.Parameters.AddWithValue("@apellidoMaterno", apellidoMaterno);
+                    cmd.Parameters.AddWithValue("@telefono", telefono);
+                    cmd.Parameters.AddWithValue("@direccion", direccion);
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    result = cmd.ExecuteNonQuery() == 1;
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
+        }
+
     }
 }
