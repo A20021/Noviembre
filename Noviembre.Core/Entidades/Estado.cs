@@ -12,6 +12,28 @@ namespace Noviembre.Core.Entidades
         public int Id { get; set; }
         public string Nombre { get; set; }
 
+        public static Estado GetById(int id){
+            Estado estado = new Estado();
+            try{
+                Conexion conexion = new Conexion();
+                if (conexion.OpenConnection()){
+                    string query = "SELECT id, nombre FROM estado WHERE id = @id";
+                    MySqlCommand cmd = new MySqlCommand(query, conexion.Connection);
+                    cmd.Parameters.AddWithValue("@id", id);
+                    MySqlDataReader dataReader = cmd.ExecuteReader();
+                    while (dataReader.Read()) {
+                        estado.Id = int.Parse(dataReader["id"].ToString());
+                        estado.Nombre = dataReader["nombre"].ToString();
+                    }
+                    dataReader.Close();
+                    conexion.CloseConnection();
+                }
+            }catch(Exception ex){
+                throw ex;
+            }
+            return estado;
+        }
+
         public static List<Estado> GetAll(){
             List<Estado> estados = new List<Estado>();
             try
@@ -36,15 +58,22 @@ namespace Noviembre.Core.Entidades
             return estados;
         }
 
-        public static bool Guardar(String nombre){
+        public static bool Guardar(int id, String nombre){
             bool result = false;
             try{
                 Conexion conexion = new Conexion();
                 if (conexion.OpenConnection()){
                     MySqlCommand cmd = conexion.Connection.CreateCommand();
-                    cmd.CommandText = "INSERT INTO estado (nombre) Values (@nombre)";
-                    cmd.Parameters.AddWithValue("@nombre", nombre);
 
+                    if (id == 0){
+                        cmd.CommandText = "INSERT INTO estado (nombre) Values (@nombre)";
+                        cmd.Parameters.AddWithValue("@nombre", nombre);
+                    }else{
+                        cmd.CommandText = "UPDATE estado SET nombre = @nombre WHERE id = @id";
+                        cmd.Parameters.AddWithValue("@id", id);
+                        cmd.Parameters.AddWithValue("@nombre", nombre);
+                    }
+                    
                     result = cmd.ExecuteNonQuery() == 1;
 
 

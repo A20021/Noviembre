@@ -15,12 +15,13 @@ namespace Noviembre.web.Controllers
             return View(estados);
         }
 
-        public ActionResult Registro(){
-            return View();
+        public ActionResult Registro(int id){
+            Estado estado = Estado.GetById(id);
+            return View(estado);
         }
 
-        public ActionResult Guardar(String nombre){
-            Estado.Guardar(nombre);
+        public ActionResult Guardar(int id,String nombre){
+            Estado.Guardar(id, nombre);
             return RedirectToAction("Index");
         }
     }
